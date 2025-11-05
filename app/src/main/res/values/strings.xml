@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StudyApp</string>
+    <string name="home_dashboard">الصفحة الرئيسية</string>
+    <string name="subjects">المواد الدراسية</string>
+    <string name="library">المكتبة</string>
+    <string name="tasks_exams">التذكيرات والاختبارات</string>
+    <string name="settings">الإعدادات</string>
+    <string name="search">البحث</string>
+</resources>

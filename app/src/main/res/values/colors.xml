@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Color: Soft Purple (Deep Purple A200) -->
+    <color name="colorPrimary">#7C4DFF</color>
+    <color name="colorPrimaryDark">#4527A0</color>
+    <color name="colorAccent">#7C4DFF</color>
+
+    <!-- Background Colors: White and Light Gray -->
+    <color name="colorBackground">#F5F5F5</color> <!-- Very light gray for background -->
+    <color name="colorSurface">#FFFFFF</color> <!-- Pure white for cards/surfaces -->
+
+    <!-- Text Colors -->
+    <color name="colorTextPrimary">#212121</color> <!-- Dark gray for main text -->
+    <color name="colorTextSecondary">#757575</color> <!-- Medium gray for secondary text -->
+
+    <!-- Other Colors -->
+    <color name="colorGray">#BDBDBD</color> <!-- General gray -->
+    <color name="colorLightGray">#E0E0E0</color> <!-- Border/Divider light gray -->
+</resources>
