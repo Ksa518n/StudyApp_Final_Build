@@ -1,11 +1,11 @@
-name: Android CI
+name: Android CI Build
 
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: # هذا يسمح بالتشغيل اليدوي
+  workflow_dispatch: # يسمح بالتشغيل اليدوي
 
 jobs:
   build:
@@ -24,6 +24,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
       
+    # هذا الجزء يحل مشكلة التوقيع (Signing) التي تظهر في بيئات CI
     - name: Create dummy keystore for debug signing
       run: |
         keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
