@@ -41,7 +41,7 @@ dependencies {
 
     // Supabase & PostgREST
     // Supabase dependencies (Using the correct JitPack format)
-    implementation 'com.github.supabase.supabase-kt:GoTrue:2.2.2'
-    implementation 'com.github.supabase.supabase-kt:Postgrest:2.2.2'
-    implementation 'com.github.supabase.supabase-kt:Storage:2.2.2'
+    implementation 'com.github.supabase.supabase-kt:GoTrue-jvm:2.2.2'
+    implementation 'com.github.supabase.supabase-kt:Postgrest-jvm:2.2.2'
+    implementation 'com.github.supabase.supabase-kt:Storage-jvm:2.2.2'
 }
