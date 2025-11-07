@@ -8,8 +8,8 @@ public class SupabaseClient {
     // NOTE: Replace with your actual Supabase URL and Anon Key
     // For security, these should ideally be loaded from a secure source or build config,
     // but for this example, we use placeholders.
-    private static final String SUPABASE_URL = "YOUR_SUPABASE_URL";
-    private static final String SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+    private static final String SUPABASE_URL = "https://erzofxlzvqzkeonuwibn.supabase.co";
+    private static final String SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVyem9meGx6dnF6a2VvbnV3aWJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1MTI2MzMsImV4cCI6MjA3ODA4ODYzM30.xdl5-Y3htA8FmjJDnyWoMmNBZhd9Pdjn_mqykNup_6A";
 
     private static PostgrestClient postgrestClient;
     private static GoTrueClient goTrueClient;
