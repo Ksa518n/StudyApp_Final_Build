@@ -4,14 +4,16 @@ public class SubjectModel {
     private long id;
     private String name;
     private String goal;
+    private boolean isSynced;
 
     public SubjectModel() {
     }
 
-    public SubjectModel(long id, String name, String goal) {
+    public SubjectModel(long id, String name, String goal, boolean isSynced) {
         this.id = id;
         this.name = name;
         this.goal = goal;
+        this.isSynced = isSynced;
     }
 
     // Getters and Setters
@@ -37,5 +39,13 @@ public class SubjectModel {
 
     public void setGoal(String goal) {
         this.goal = goal;
+    }
+
+    public boolean isSynced() {
+        return isSynced;
+    }
+
+    public void setSynced(boolean synced) {
+        isSynced = synced;
     }
 }

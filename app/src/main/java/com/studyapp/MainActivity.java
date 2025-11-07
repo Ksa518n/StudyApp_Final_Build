@@ -7,6 +7,7 @@ import android.view.View;
 import com.google.android.material.button.MaterialButton;
 import android.util.Log;
 import android.widget.Toast;
+import com.studyapp.SupabaseClient;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
         
         setContentView(R.layout.activity_main);
 
+        // Initialize Supabase Client
+        SupabaseClient.initialize();
+        
         // Initialize AppRepository (This is a common crash point if DB is corrupted or tables are missing)
         try {
             appRepository = new AppRepository(this);

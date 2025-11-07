@@ -35,4 +35,9 @@ dependencies {
     
     // WorkManager for background tasks (Tasks/Exams notifications)
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
+
+    // Supabase & PostgREST
+    implementation 'io.supabase.android:gotrue-kt:2.2.2'
+    implementation 'io.supabase.android:postgrest-kt:2.2.2'
+    implementation 'io.supabase.android:storage-kt:2.2.2'
 }

@@ -8,6 +8,7 @@ import com.studyapp.models.SubjectModel;
 import com.studyapp.models.TaskModel;
 import com.studyapp.models.NoteModel;
 import com.studyapp.models.FileModel;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +23,27 @@ public class AppRepository {
     // --- SUBJECTS Operations ---
 
     public long addSubject(SubjectModel subject) {
+        // Log the operation for debugging sync issues
+        Log.d("AppRepository", "Adding new subject: " + subject.getName());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(DatabaseHelper.COLUMN_SUBJECT_NAME, subject.getName());
         values.put(DatabaseHelper.COLUMN_SUBJECT_GOAL, subject.getGoal());
+        values.put(DatabaseHelper.COLUMN_SUBJECT_IS_SYNCED, 0); // Mark as not synced
 
         long id = db.insert(DatabaseHelper.TABLE_SUBJECTS, null, values);
+        db.close();
+        return id;
+    }
+
+    public int markSubjectAsSynced(long subjectId) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(DatabaseHelper.COLUMN_SUBJECT_IS_SYNCED, 1);
+        int rowsAffected = db.update(DatabaseHelper.TABLE_SUBJECTS, values, DatabaseHelper.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(subjectId)});
+        db.close();
+        return rowsAffected;
         db.close();
         return id;
     }
@@ -45,6 +61,7 @@ public class AppRepository {
                 subject.setId(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID)));
                 subject.setName(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_SUBJECT_NAME)));
                 subject.setGoal(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_SUBJECT_GOAL)));
+                subject.setSynced(cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_SUBJECT_IS_SYNCED)) == 1);
                 subjectList.add(subject);
             } while (cursor.moveToNext());
         }

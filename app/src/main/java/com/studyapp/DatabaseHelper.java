@@ -21,6 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // SUBJECTS Table Columns
     public static final String COLUMN_SUBJECT_NAME = "name";
     public static final String COLUMN_SUBJECT_GOAL = "goal";
+    public static final String COLUMN_SUBJECT_IS_SYNCED = "is_synced";
 
     // NOTES Table Columns
     public static final String COLUMN_NOTE_CONTENT = "content";
@@ -36,12 +37,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_TASK_DUE_DATE = "due_date"; // Unix timestamp
     public static final String COLUMN_TASK_TYPE = "type"; // e.g., "Exam", "Homework"
     public static final String COLUMN_TASK_IS_COMPLETED = "is_completed";
+    public static final String COLUMN_TASK_SUBJECT_ID = "subject_id";
 
     // SQL statement for creating the SUBJECTS table
     private static final String CREATE_TABLE_SUBJECTS = "CREATE TABLE " + TABLE_SUBJECTS + " ("
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_SUBJECT_NAME + " TEXT NOT NULL UNIQUE, "
-            + COLUMN_SUBJECT_GOAL + " TEXT"
+            + COLUMN_SUBJECT_GOAL + " TEXT, "
+            + COLUMN_SUBJECT_IS_SYNCED + " INTEGER DEFAULT 0" // 0: not synced, 1: synced
             + ");";
 
     // SQL statement for creating the NOTES table
@@ -49,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NOTE_CONTENT + " TEXT NOT NULL, "
             + COLUMN_NOTE_SUBJECT_ID + " INTEGER, "
-            
+            + "FOREIGN KEY(" + COLUMN_NOTE_SUBJECT_ID + ") REFERENCES " + TABLE_SUBJECTS + "(" + COLUMN_ID + ") ON DELETE CASCADE"
             + ");";
 
     // SQL statement for creating the FILES table
@@ -58,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_FILE_NAME + " TEXT NOT NULL, "
             + COLUMN_FILE_PATH + " TEXT NOT NULL, "
             + COLUMN_FILE_SUBJECT_ID + " INTEGER, "
-            
+            + "FOREIGN KEY(" + COLUMN_FILE_SUBJECT_ID + ") REFERENCES " + TABLE_SUBJECTS + "(" + COLUMN_ID + ") ON DELETE CASCADE"
             + ");";
             
     // SQL statement for creating the TASKS table
@@ -67,7 +70,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_TASK_TITLE + " TEXT NOT NULL, "
             + COLUMN_TASK_DUE_DATE + " INTEGER NOT NULL, "
             + COLUMN_TASK_TYPE + " TEXT, "
-            + COLUMN_TASK_IS_COMPLETED + " INTEGER DEFAULT 0" // 0 for false, 1 for true
+            + COLUMN_TASK_IS_COMPLETED + " INTEGER DEFAULT 0, " // 0 for false, 1 for true
+            + COLUMN_TASK_SUBJECT_ID + " INTEGER, "
+            + "FOREIGN KEY(" + COLUMN_TASK_SUBJECT_ID + ") REFERENCES " + TABLE_SUBJECTS + "(" + COLUMN_ID + ") ON DELETE CASCADE"
             + ");";
 
 
