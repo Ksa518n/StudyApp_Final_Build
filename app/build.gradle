@@ -30,6 +30,9 @@ dependencies {
     // Constraint Layout
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     
+    // Kotlin Standard Library (Required for Supabase-kt)
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.9.22'
+    
     // SQLite ORM (Room is preferred, but for AIDE simplicity, we'll use raw SQLite or a simple wrapper)
     // We will manage SQLite manually in Java for maximum compatibility with AIDE.
     
@@ -37,7 +40,6 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
 
     // Supabase & PostgREST
-    implementation 'io.supabase.android:gotrue-kt:2.2.2'
-    implementation 'io.supabase.android:postgrest-kt:2.2.2'
-    implementation 'io.supabase.android:storage-kt:2.2.2'
+    // Supabase dependencies (Using the correct JitPack format)
+    implementation 'com.github.supabase:supabase-kt:2.2.2'
 }
