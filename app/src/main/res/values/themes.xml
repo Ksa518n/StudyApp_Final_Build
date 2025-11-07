@@ -19,7 +19,7 @@
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorTextPrimary</item>
         
-        <!-- Text Appearance (Corrected) -->
+        <!-- Text Appearance -->
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
         <item name="colorTextSecondary">@color/colorTextSecondary</item>
