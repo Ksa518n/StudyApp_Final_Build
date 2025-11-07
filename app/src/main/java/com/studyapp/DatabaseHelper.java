@@ -49,7 +49,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_NOTE_CONTENT + " TEXT NOT NULL, "
             + COLUMN_NOTE_SUBJECT_ID + " INTEGER, "
-            + "FOREIGN KEY(" + COLUMN_NOTE_SUBJECT_ID + ") REFERENCES " + TABLE_SUBJECTS + "(" + COLUMN_ID + ") ON DELETE CASCADE"
+            
             + ");";
 
     // SQL statement for creating the FILES table
@@ -58,7 +58,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_FILE_NAME + " TEXT NOT NULL, "
             + COLUMN_FILE_PATH + " TEXT NOT NULL, "
             + COLUMN_FILE_SUBJECT_ID + " INTEGER, "
-            + "FOREIGN KEY(" + COLUMN_FILE_SUBJECT_ID + ") REFERENCES " + TABLE_SUBJECTS + "(" + COLUMN_ID + ") ON DELETE CASCADE"
+            
             + ");";
             
     // SQL statement for creating the TASKS table
