@@ -22,7 +22,7 @@
         <!-- Text Appearance -->
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextSecondary</item>
-        <item name="colorTextSecondary">@color/colorTextSecondary</item>
+        
         
         <!-- CardView Style (Rounded Corners) -->
         <item name="materialCardViewStyle">@style/Widget.StudyApp.CardView</item>
