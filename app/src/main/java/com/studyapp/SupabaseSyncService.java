@@ -3,8 +3,8 @@ package com.studyapp;
 import android.content.Context;
 import android.util.Log;
 import com.studyapp.models.SubjectModel;
-import io.supabase.postgrest.PostgrestClient;
-import io.supabase.postgrest.models.PostgrestResponse;
+import io.github.jan_tennert.supabase.postgrest.Postgrest;
+import io.github.jan_tennert.supabase.postgrest.PostgrestResult;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -14,7 +14,7 @@ public class SupabaseSyncService {
     private static final String TAG = "SupabaseSyncService";
     private final Context context;
     private final AppRepository appRepository;
-    private final PostgrestClient supabaseClient;
+    private final Postgrest supabaseClient;
 
     public SupabaseSyncService(Context context) {
         this.context = context;
@@ -60,11 +60,11 @@ public class SupabaseSyncService {
 
             // Upsert (Insert or Update) data to Supabase
             // Assuming a table named 'subjects' exists in Supabase with columns: local_id, name, goal
-            PostgrestResponse response = supabaseClient.from("subjects")
+            PostgrestResult response = supabaseClient.from("subjects")
                     .upsert(jsonArray.toString())
                     .execute();
 
-            if (response.hasError()) {
+            if (response.getError() != null) {
                 Log.e(TAG, "Error pushing subjects to Supabase: " + response.getError().getMessage());
             } else {
                 Log.i(TAG, "Successfully pushed " + localSubjects.size() + " subjects to Supabase.");
@@ -78,11 +78,11 @@ public class SupabaseSyncService {
     private void pullRemoteSubjects() {
         try {
             // Select all subjects from Supabase
-            PostgrestResponse response = supabaseClient.from("subjects")
+            PostgrestResult response = supabaseClient.from("subjects")
                     .select("*")
                     .execute();
 
-            if (response.hasError()) {
+            if (response.getError() != null) {
                 Log.e(TAG, "Error pulling subjects from Supabase: " + response.getError().getMessage());
                 return;
             }
