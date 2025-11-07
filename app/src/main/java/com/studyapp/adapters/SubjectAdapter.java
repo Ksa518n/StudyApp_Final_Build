@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.studyapp.R;
 import com.studyapp.models.SubjectModel;
+import android.content.Intent;
+import com.studyapp.SubjectDetailActivity;
 
 import java.util.List;
 
