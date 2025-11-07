@@ -40,8 +40,8 @@ dependencies {
     implementation 'androidx.work:work-runtime-ktx:2.9.0'
 
     // Supabase & PostgREST
-    // Supabase dependencies (Using the correct JitPack format)
-    implementation 'com.github.supabase.supabase-kt:GoTrue-jvm:2.2.2'
-    implementation 'com.github.supabase.supabase-kt:Postgrest-jvm:2.2.2'
-    implementation 'com.github.supabase.supabase-kt:Storage-jvm:2.2.2'
+    // Supabase dependencies (Using the official MavenCentral dependencies)
+    implementation 'io.github.jan-tennert.supabase:gotrue-kt:2.3.0'
+    implementation 'io.github.jan-tennert.supabase:postgrest-kt:2.3.0'
+    implementation 'io.github.jan-tennert.supabase:storage-kt:2.3.0'
 }
