@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-  workflow_dispatch: # يسمح بالتشغيل اليدوي
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,20 +21,26 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
+    # **التعديل الهام: تثبيت Android SDK Platform 34**
+    - name: Install Android SDK Platform 34
+      run: |
+        # يتم استخدام sdkmanager لتثبيت حزمة منصة Android 34
+        echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-34"
+        
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew # تم التعديل لحل مشكلة المسار
+      run: chmod +x gradlew
       
     - name: Create dummy keystore for debug signing
       run: |
         keytool -genkey -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
         mkdir -p app
-        mv debug.keystore app/debug.keystore # تم التعديل لحل مشكلة المسار
+        mv debug.keystore app/debug.keystore
 
     - name: Build debug APK
-      run: ./gradlew assembleDebug # تم التعديل لحل مشكلة المسار
+      run: ./gradlew assembleDebug
 
     - name: Upload Debug APK
       uses: actions/upload-artifact@v4
       with:
         name: StudyApp-Debug-APK
-        path: app/build/outputs/apk/debug/app-debug.apk # تم التعديل لحل مشكلة المسار
+        path: app/build/outputs/apk/debug/app-debug.apk
